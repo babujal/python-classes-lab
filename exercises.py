@@ -63,7 +63,6 @@ class Game():
             self.print_board()
             move = self.get_move()
             self.board[move] = self.player_turn
-            # self.check_for_tie()
             print(self.board.values())
 
             if self.check_for_winner():
