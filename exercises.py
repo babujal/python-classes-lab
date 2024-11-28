@@ -26,7 +26,7 @@ class Game():
 
     def get_move(self):
           while True:
-                move = input(f"Enter a valid movie (example: a1): ").lower()
+                move = input(f"Enter a valid move (example: a1): ").lower()
                 if move not in self.board:
                     print('Invalid input, combine letters from A to B with num from 1 to 3 like a1')
                 elif self.board[move] !=None:
