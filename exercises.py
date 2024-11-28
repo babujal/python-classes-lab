@@ -10,23 +10,25 @@ class Game():
         }
         self.player_turn = 'x'
 
-    def play_game(self):
-        print('Welcome message')
-
-
     def print_board(self):
         b = self.board
         print(f"""
             A   B   C
-        1)  {b['a1'] or None} | {b['b1'] or None} | {b['c1'] or None}
+        1)  {b['a1'] or ' '} | {b['b1'] or ' '} | {b['c1'] or ' '}
             ----------
-        2)  {b['a2'] or None} | {b['b2'] or None} | {b['c2'] or None}
+        2)  {b['a2'] or ' '} | {b['b2'] or ' '} | {b['c2'] or ' '}
             ----------
-        3)  {b['a3'] or None} | {b['b3'] or None} | {b['c3'] or None}
+        3)  {b['a3'] or ' '} | {b['b3'] or ' '} | {b['c3'] or ' '}
         """)
-# Define a render        
+
+    def play_game(self):
+        print('Welcome to Tic Tac Toe!')
+        while True:
+            self.print_board()
+            break
+
+
 
 game_instance = Game()
 game_instance.play_game()
-game_instance.print_board()
 
