@@ -51,10 +51,11 @@ class Game():
         return False    
 
     def check_for_tie(self):
-        for position in self.board.values():
-            if position == None:
-                return False
-        return True   
+        return all(value != None for value in self.board.values())  #This line of code takes care of the whle logic below perfectly!
+        # for position in self.board.values():
+        #     if position == None:
+        #         return False
+        # return True
 
     def play_game(self):
         print('Shall we play Tic Tac Toe!?')
