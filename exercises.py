@@ -50,16 +50,11 @@ class Game():
                 return True
         return False    
 
-    # def check_for_tie(self):
-    #     all_pos_occupid = 0
-    #     for position in self.board:
-    #         if self.board[position] != None:
-    #             all_pos_occupid += 1
-    #             print(all_pos_occupid)
-    #         else:
-    #             all_pos_occupid == 9
-    #             return True
-    #     return False   
+    def check_for_tie(self):
+        for position in self.board.values():
+            if position == None:
+                return False
+        return True   
 
     def play_game(self):
         print('Shall we play Tic Tac Toe!?')
@@ -74,10 +69,10 @@ class Game():
                 self.print_board()
                 print(f'{self.player_turn} wins!')
                 break
-            # elif self.check_for_tie():
-            #     self.print_board()
-            #     print('It is a tie!')
-            #     break
+            elif self.check_for_tie():
+                self.print_board()
+                print('It is a tie!')
+                break
             else: self.switch_turn()
 
             
