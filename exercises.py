@@ -21,11 +21,66 @@ class Game():
         3)  {b['a3'] or ' '} | {b['b3'] or ' '} | {b['c3'] or ' '}
         """)
 
+    def switch_turn(self):
+        self.player_turn = self.player_turn = 'o' if self.player_turn == 'x' else 'x'
+
+    def get_move(self):
+          while True:
+                move = input(f"Enter a valid movie (example: a1): ").lower()
+                if move not in self.board:
+                    print('Invalid input, combine letters from A to B with num from 1 to 3 like a1')
+                elif self.board[move] !=None:
+                    print('Space already taken, enter the corresponding to an empty space')
+                else:
+                    return move
+
+    def check_for_winner(self):
+        winning_patterns = [
+            ["a1", "b1", "c1"], ["a2", "b2", "c2"], ["a3", "b3", "c3"],
+            ["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"],
+            ["a1", "b2", "c3"], ["c1", "b2", "a3"]
+        ]
+        for pattern in winning_patterns:
+            we_have_a_winner = True
+            for position in pattern:
+                if self.board[position] != self.player_turn:
+                    we_have_a_winner = False
+                    break
+            if we_have_a_winner:
+                return True
+        return False    
+
+    # def check_for_tie(self):
+    #     all_pos_occupid = 0
+    #     for position in self.board:
+    #         if self.board[position] != None:
+    #             all_pos_occupid += 1
+    #             print(all_pos_occupid)
+    #         else:
+    #             all_pos_occupid == 9
+    #             return True
+    #     return False   
+
     def play_game(self):
-        print('Welcome to Tic Tac Toe!')
+        print('Shall we play Tic Tac Toe!?')
         while True:
             self.print_board()
-            break
+            move = self.get_move()
+            self.board[move] = self.player_turn
+            # self.check_for_tie()
+            print(self.board.values())
+
+            if self.check_for_winner():
+                self.print_board()
+                print(f'{self.player_turn} wins!')
+                break
+            # elif self.check_for_tie():
+            #     self.print_board()
+            #     print('It is a tie!')
+            #     break
+            else: self.switch_turn()
+
+            
 
 
 
